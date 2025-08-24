@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             AddLinkHeadersForPreloadedAssets::class,
         ]);
     })
+    // (reverted) removed custom 'role' middleware alias
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

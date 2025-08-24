@@ -136,7 +136,6 @@ const ChatPage: React.FC<ChatPageProps> = ({ user_id, other_user_id, users, chat
       });
       if (res.ok) {
         const created: ChatMessage = await res.json();
-        // Nie dodajemy duplikatu jeśli event przyjdzie – ale aby UI było responsywne, dodamy tylko jeżeli jeszcze nie istnieje
         setMessages(prev => prev.some(m => m.id === created.id) ? prev : [...prev, created]);
         setInput('');
       } else {
@@ -156,7 +155,6 @@ const ChatPage: React.FC<ChatPageProps> = ({ user_id, other_user_id, users, chat
     return () => clearTimeout(t);
   }, [messages, other_user_id]);
 
-  // Example breadcrumbs definition
   const breadcrumbs = [
     { title: 'Strona główna', href: '/' },
     { title: 'Chat', href: '/chat' }
